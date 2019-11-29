@@ -12,4 +12,3 @@ data "aws_ssm_parameter" "default" {
   count = var.enabled && false == local.skip_read ? 1 : 0
   name  = local.key
 }
-

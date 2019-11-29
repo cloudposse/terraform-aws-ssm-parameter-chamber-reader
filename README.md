@@ -88,7 +88,20 @@ We literally have [*hundreds of terraform modules*][terraform_modules] that are 
 ## Examples
 
 ```hcl
+  variable "rbac_enabled" {
+    type        = bool
+    default     = null
+    description = "Override rbac enabled"
+  }
 
+  module "account_id" {
+    source = "git::https://github.com/cloudposse/terraform-aws-ssm-parameter-chamber-reader.git?ref=master"
+
+    enabled         = "true"
+    chamber_service = "kops"
+    parameter       = "rbac_enabled"
+    override_value  = var.rbac_enabled
+  }
 ```
 
 
