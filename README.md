@@ -1,6 +1,9 @@
+
+<!-- markdownlint-disable -->
 # terraform-aws-ssm-parameter-chamber-reader
 
  [![Codefresh Build Status](https://g.codefresh.io/api/badges/pipeline/cloudposse/terraform-modules%2Fterraform-aws-ssm-parameter-chamber-reader?type=cf-1)](https://g.codefresh.io/public/accounts/cloudposse/pipelines/5d04407b1fc622c0cf6d3df8) [![Latest Release](https://img.shields.io/github/release/cloudposse/terraform-aws-ssm-parameter-chamber-reader.svg)](https://github.com/cloudposse/terraform-aws-ssm-parameter-chamber-reader/releases/latest) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
+<!-- markdownlint-restore -->
 
 [![README Header][readme_header_img]][readme_header_link]
 
@@ -28,7 +31,6 @@
 -->
 
 Terraform module read ssm paramters managed with Chamber.
-
 
 ---
 
@@ -58,6 +60,24 @@ We literally have [*hundreds of terraform modules*][terraform_modules] that are 
 
 
 
+
+
+## Security & Compliance [<img src="https://cloudposse.com/wp-content/uploads/2020/11/bridgecrew.svg" width="250" align="right" />](https://bridgecrew.io/)
+
+Security scanning is graciously provided by Bridgecrew. Bridgecrew is the leading fully hosted, cloud-native solution providing continuous Terraform security and compliance.
+
+| Benchmark | Description |
+|--------|---------------|
+| [![Infrastructure Security](https://www.bridgecrew.cloud/badges/github/cloudposse/terraform-aws-ssm-parameter-chamber-reader/general)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=cloudposse%2Fterraform-aws-ssm-parameter-chamber-reader&benchmark=INFRASTRUCTURE+SECURITY) | Infrastructure Security Compliance |
+| [![CIS KUBERNETES](https://www.bridgecrew.cloud/badges/github/cloudposse/terraform-aws-ssm-parameter-chamber-reader/cis_kubernetes)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=cloudposse%2Fterraform-aws-ssm-parameter-chamber-reader&benchmark=CIS+KUBERNETES+V1.5) | Center for Internet Security, KUBERNETES Compliance |
+| [![CIS AWS](https://www.bridgecrew.cloud/badges/github/cloudposse/terraform-aws-ssm-parameter-chamber-reader/cis_aws)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=cloudposse%2Fterraform-aws-ssm-parameter-chamber-reader&benchmark=CIS+AWS+V1.2) | Center for Internet Security, AWS Compliance |
+| [![CIS AZURE](https://www.bridgecrew.cloud/badges/github/cloudposse/terraform-aws-ssm-parameter-chamber-reader/cis_azure)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=cloudposse%2Fterraform-aws-ssm-parameter-chamber-reader&benchmark=CIS+AZURE+V1.1) | Center for Internet Security, AZURE Compliance |
+| [![PCI-DSS](https://www.bridgecrew.cloud/badges/github/cloudposse/terraform-aws-ssm-parameter-chamber-reader/pci)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=cloudposse%2Fterraform-aws-ssm-parameter-chamber-reader&benchmark=PCI-DSS+V3.2) | Payment Card Industry Data Security Standards Compliance |
+| [![NIST-800-53](https://www.bridgecrew.cloud/badges/github/cloudposse/terraform-aws-ssm-parameter-chamber-reader/nist)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=cloudposse%2Fterraform-aws-ssm-parameter-chamber-reader&benchmark=NIST-800-53) | National Institute of Standards and Technology Compliance |
+| [![ISO27001](https://www.bridgecrew.cloud/badges/github/cloudposse/terraform-aws-ssm-parameter-chamber-reader/iso)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=cloudposse%2Fterraform-aws-ssm-parameter-chamber-reader&benchmark=ISO27001) | Information Security Management System, ISO/IEC 27001 Compliance |
+| [![SOC2](https://www.bridgecrew.cloud/badges/github/cloudposse/terraform-aws-ssm-parameter-chamber-reader/soc2)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=cloudposse%2Fterraform-aws-ssm-parameter-chamber-reader&benchmark=SOC2)| Service Organization Control 2 Compliance |
+| [![CIS GCP](https://www.bridgecrew.cloud/badges/github/cloudposse/terraform-aws-ssm-parameter-chamber-reader/cis_gcp)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=cloudposse%2Fterraform-aws-ssm-parameter-chamber-reader&benchmark=CIS+GCP+V1.1) | Center for Internet Security, GCP Compliance |
+| [![HIPAA](https://www.bridgecrew.cloud/badges/github/cloudposse/terraform-aws-ssm-parameter-chamber-reader/hipaa)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=cloudposse%2Fterraform-aws-ssm-parameter-chamber-reader&benchmark=HIPAA) | Health Insurance Portability and Accountability Compliance |
 
 
 
@@ -98,36 +118,47 @@ Available targets:
 
 ```
 <!-- markdownlint-restore -->
+<!-- markdownlint-disable -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.12 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.12 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [aws_ssm_parameter.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ssm_parameter) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| chamber\_format | Format to store parameters in SSM, for consumption with chamber | `string` | `"/%s/%s"` | no |
-| chamber\_service | SSM parameter service name for use with chamber. This is used in chamber\_format where /$chamber\_service/$parameter would be the default. | `string` | n/a | yes |
-| default\_value | Use as default value in case ssm paramter is empty | `string` | `""` | no |
-| enabled | Set to false to prevent the module from creating any resources | `bool` | `true` | no |
-| override\_key | Is specified, use as key to read from ssm parameter and ignore chamber\_format. | `string` | `""` | no |
-| override\_value | Is specified, just return it as value by skipping read from ssm parameter. | `string` | `""` | no |
-| parameter | SSM parameter name for use with chamber. This is used in chamber\_format where /$chamber\_service/$parameter would be the default. | `string` | n/a | yes |
+| <a name="input_chamber_format"></a> [chamber\_format](#input\_chamber\_format) | Format to store parameters in SSM, for consumption with chamber | `string` | `"/%s/%s"` | no |
+| <a name="input_chamber_service"></a> [chamber\_service](#input\_chamber\_service) | SSM parameter service name for use with chamber. This is used in chamber\_format where /$chamber\_service/$parameter would be the default. | `string` | n/a | yes |
+| <a name="input_default_value"></a> [default\_value](#input\_default\_value) | Use as default value in case ssm paramter is empty | `string` | `""` | no |
+| <a name="input_enabled"></a> [enabled](#input\_enabled) | Set to false to prevent the module from creating any resources | `bool` | `true` | no |
+| <a name="input_override_key"></a> [override\_key](#input\_override\_key) | Is specified, use as key to read from ssm parameter and ignore chamber\_format. | `string` | `""` | no |
+| <a name="input_override_value"></a> [override\_value](#input\_override\_value) | Is specified, just return it as value by skipping read from ssm parameter. | `string` | `""` | no |
+| <a name="input_parameter"></a> [parameter](#input\_parameter) | SSM parameter name for use with chamber. This is used in chamber\_format where /$chamber\_service/$parameter would be the default. | `string` | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| value | Parameter value |
-
+| <a name="output_value"></a> [value](#output\_value) | Parameter value |
+<!-- markdownlint-restore -->
 
 
 
@@ -138,13 +169,12 @@ Like this project? Please give it a ★ on [our GitHub](https://github.com/cloud
 Are you using this project or any of our other projects? Consider [leaving a testimonial][testimonial]. =)
 
 
+
 ## Related Projects
 
 Check out these related projects.
 
 - [Chamber](https://github.com/segmentio/chamber) - Chamber is a tool for managing secrets. Currently it does so by storing secrets in SSM Parameter Store, an AWS service for storing secrets.
-
-
 
 ## Help
 
@@ -217,7 +247,7 @@ In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
 
 ## Copyright
 
-Copyright © 2017-2020 [Cloud Posse, LLC](https://cpco.io/copyright)
+Copyright © 2017-2023 [Cloud Posse, LLC](https://cpco.io/copyright)
 
 
 
@@ -274,15 +304,17 @@ Check out [our other projects][github], [follow us on twitter][twitter], [apply 
 
 ### Contributors
 
+<!-- markdownlint-disable -->
 |  [![Igor Rodionov][goruha_avatar]][goruha_homepage]<br/>[Igor Rodionov][goruha_homepage] |
 |---|
+<!-- markdownlint-restore -->
 
   [goruha_homepage]: https://github.com/goruha
   [goruha_avatar]: https://img.cloudposse.com/150x150/https://github.com/goruha.png
 
 [![README Footer][readme_footer_img]][readme_footer_link]
 [![Beacon][beacon]][website]
-
+<!-- markdownlint-disable -->
   [logo]: https://cloudposse.com/logo-300x69.svg
   [docs]: https://cpco.io/docs?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-ssm-parameter-chamber-reader&utm_content=docs
   [website]: https://cpco.io/homepage?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-ssm-parameter-chamber-reader&utm_content=website
@@ -313,3 +345,4 @@ Check out [our other projects][github], [follow us on twitter][twitter], [apply 
   [share_googleplus]: https://plus.google.com/share?url=https://github.com/cloudposse/terraform-aws-ssm-parameter-chamber-reader
   [share_email]: mailto:?subject=terraform-aws-ssm-parameter-chamber-reader&body=https://github.com/cloudposse/terraform-aws-ssm-parameter-chamber-reader
   [beacon]: https://ga-beacon.cloudposse.com/UA-76589703-4/cloudposse/terraform-aws-ssm-parameter-chamber-reader?pixel&cs=github&cm=readme&an=terraform-aws-ssm-parameter-chamber-reader
+<!-- markdownlint-restore -->
