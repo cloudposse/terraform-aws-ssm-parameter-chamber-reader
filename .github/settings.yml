@@ -1,0 +1,7 @@
+# Upstream changes from _extends are only recognized when modifications are made to this file in the default branch.
+_extends: .github
+repository:
+  name: terraform-aws-ssm-parameter-chamber-reader
+  description: Terraform module read ssm paramters managed with Chamber.
+  homepage: https://cloudposse.com/accelerate
+  topics: ""
