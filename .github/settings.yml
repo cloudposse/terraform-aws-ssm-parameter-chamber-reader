@@ -5,3 +5,4 @@ repository:
   description: Terraform module read ssm paramters managed with Chamber.
   homepage: https://cloudposse.com/accelerate
   topics: ""
+
